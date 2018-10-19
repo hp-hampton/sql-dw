@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>business-cornerstone</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.45</version>
-        </dependency>
-    </dependencies>
+    <artifactId>everest</artifactId>
 
     <build>
         <plugins>
@@ -26,13 +18,18 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <configuration>
-                    <locations>classpath:db/migration</locations>
+                    <locations>filesystem:${basedir}/src/main/resources/db/migration/V1/ddl</locations>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>com.hup</groupId>
-                        <artifactId>business-cornerstone</artifactId>
+                        <artifactId>everest</artifactId>
                         <version>${project.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.45</version>
                     </dependency>
                 </dependencies>
             </plugin>
